@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<style>
+
+    table {
+        border: 1px black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        border: 1px solid grey;
+    }
+
+</style>
+<body>
+<table>
+    <tr>
+        <td><h1>ID</h1></td>
+        <td><h1>Username</h1></td>
+        <td><h1>Surname</h1></td>
+        <td><h1>Age</h1></td>
+        <td><h1>Job</h1></td>
+    </tr>
+    <tr th:each="user:${listOfUsers}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getSurname()}"></td>
+        <td th:text="${user.getAge()}"></td>
+        <td th:text="${user.getJob()}"></td>
+        <td>
+            <form th:action="@{/admin/all-users/{id}/update(id=${user.getId()})}">
+                <input type="submit" value="update"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/admin/all-users/delete/{id}(id=${user.getId()})}">
+                <input type="submit" value="delete"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

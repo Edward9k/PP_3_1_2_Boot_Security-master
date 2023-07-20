@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Admin, welcome spring boot security page!</h1>
+<style>
+
+    table {
+        border: 1px black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        border: 1px solid grey;
+    }
+
+</style>
+<table>
+    <tr>
+        <td><h1>ID</h1></td>
+        <td><h1>Username</h1></td>
+        <td><h1>Surname</h1></td>
+        <td><h1>Age</h1></td>
+        <td><h1>Job</h1></td>
+        <td><h1>Roles</h1></td>
+    </tr>
+    <tr>
+        <td th:text="${admin.getId()}"></td>
+        <td th:text="${admin.getUsername()}"></td>
+        <td th:text="${admin.getSurname()}"></td>
+        <td th:text="${admin.getAge()}"></td>
+        <td th:text="${admin.getJob()}"></td>
+        <td th:text="${admin.getRoles()}"></td>
+    </tr>
+    <form action="/logout">
+        <button type="submit">Logout</button>
+    </form>
+</table>
+</body>
+</html>
+
