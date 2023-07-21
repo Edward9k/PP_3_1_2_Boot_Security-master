@@ -8,6 +8,7 @@ import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
 import java.util.Arrays;
+import java.util.Set;
 
 @SpringBootApplication
 public class TestUserRun {
@@ -31,7 +32,7 @@ public class TestUserRun {
         User user1 = new User("user", "user", 54, "User", passwordEncoder.encode("us6198675517er"));
 
         if (!userRepository.findByUsername(user1.getUsername()).isPresent()) {
-            user1.setRoles(Arrays.asList(userRole));
+            user1.setRoles(Set.of(userRole));
             userRepository.save(user1);
         } else {
             System.out.println(user1.getUsername() + " уже существует");
@@ -40,7 +41,7 @@ public class TestUserRun {
         User user2 = new User("admin", "admin", 80, "Admin", passwordEncoder.encode("ad63758267217min"));
 
         if (!userRepository.findByUsername(user2.getUsername()).isPresent()) {
-            user2.setRoles(Arrays.asList(userRole, adminRole));
+            user2.setRoles(Set.of(userRole, adminRole));
             userRepository.save(user2);
         } else {
             System.out.println(user2.getUsername() + " уже существует");
